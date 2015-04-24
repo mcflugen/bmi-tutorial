@@ -10,7 +10,7 @@
 #   /usr/local/ruby.
 
 PREFIX=$(pwd)
-JAVA=/usr/local/java/default/bin/java
+JAVA=/usr/java/default/bin/java
 
 echo "Installing the entire wmt stack in:"
 echo ""
