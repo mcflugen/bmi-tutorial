@@ -7,6 +7,9 @@ from heat_utils import solve_2d_heat_eqn, read_params_from_file
 
 
 class Heat(object):
+
+    """Basic Model Interface for heat component"""
+
     def __init__(self):
         self._spacing = (1., 1.)
         self._alpha = 1.
@@ -17,6 +20,13 @@ class Heat(object):
         self.temperature = None
 
     def initialize(self, fname):
+        """Initialize from file.
+
+        Parameters
+        ----------
+        fname : str
+            YAML-formatted input file.
+        """
         params = read_params_from_file('input.yaml')
 
         dy, dx = params['spacing']
@@ -36,12 +46,14 @@ class Heat(object):
         self.end_time = params['end_time']
 
     def update(self):
+        """Update model for a single time step"""
         self.temperature[:] = solve_2d_heat_eqn(self.temperature, self._spacing,
                                                 alpha=self._alpha,
                                                 time_step=self._time_step)
         self.time += self._time_step
 
     def finalize(self):
+        """Clean up"""
         pass
 
 
