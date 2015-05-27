@@ -7,6 +7,18 @@ from heat_utils import solve_2d_heat_eqn, read_params_from_file
 
 
 def initialize(fname):
+    """Initialize the heat model.
+
+    Parameters
+    ----------
+    fname : str
+        Name of the YAML-formatted input file.
+
+    Returns
+    -------
+    dict
+        Parameters for the heat model as a dict.
+    """
     params = read_params_from_file('input.yaml')
 
     dy, dx = params['spacing']
@@ -29,13 +41,22 @@ def initialize(fname):
 
 
 def update(params):
+    """Update the heat model one time step.
+
+    Parameters
+    ----------
+    params : dict
+        Heat model parameters as a dict.
+    """
     temperature = solve_2d_heat_eqn(params['temperature'], params['spacing'],
                                     alpha=params['alpha'],
                                     time_step=params['time_step'])
+    params['temperature'] = temperature
     params['time'] += params['time_step']
 
 
 def finalize():
+    """Finalize the heat model."""
     pass
 
 
@@ -45,8 +66,8 @@ def main():
     while params['time'] < params['end_time']:
         update(params)
 
-        print 'time: %f' % time
-        np.savetxt(sys.stdout, temperature, fmt='%.3f')
+        print 'time: %f' % params['time']
+        np.savetxt(sys.stdout, params['temperature'], fmt='%.3f')
 
     finalize()
 
