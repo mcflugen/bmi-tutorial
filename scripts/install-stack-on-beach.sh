@@ -5,6 +5,12 @@
 # Install the entire software stack on beach.colorado.edu into the CURRENT
 # DIRECTORY. This is really only specific to beach in the location of java.
 #
+# It's usually a good idea to run this script in a clean environment. However, there
+# are a few environment variables that need to be defined for the install script to
+# work. Running this script like the following will accomplish this,
+#
+#     /usr/bin/env -i HOME=$HOME USER=$USER TERM=$TERM SHELL=$SHELL /bin/bash install-stack-on-beach.sh
+#
 # Note:
 #   You must have ruby in your path. On beach, ruby is installed under
 #   /usr/local/ruby.
