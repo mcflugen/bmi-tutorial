@@ -1,0 +1,4 @@
+language: c
+
+install:
+  - /bin/bash scripts/install-stack-on-beach.sh
