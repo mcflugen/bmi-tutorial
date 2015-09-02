@@ -17,6 +17,9 @@
 
 PREFIX=$(pwd)
 JAVA=/usr/java/default/bin/java
+RUBY=/usr/local/ruby/bin/ruby
+
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/etc:/usr/lib
 
 echo "Installing the entire wmt stack in:"
 echo ""
@@ -41,4 +44,4 @@ done
 echo "installing..."
 
 wget https://raw.githubusercontent.com/csdms/wmt-exe/master/scripts/install
-python ./install --with-java=$JAVA $PREFIX
+python ./install --with-java=$JAVA --with-ruby=$RUBY $PREFIX
