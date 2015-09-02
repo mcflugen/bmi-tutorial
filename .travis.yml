@@ -1,4 +1,5 @@
 language: c
 
 install:
-  - /bin/bash scripts/install-stack-on-beach.sh
+  - wget https://raw.githubusercontent.com/csdms/wmt-exe/master/scripts/install
+  - python ./install $(pwd)
