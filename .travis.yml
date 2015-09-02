@@ -1,5 +1,11 @@
 language: c
 
 install:
+  - gcc -dumpversion
+  - g++ -dumpversion
+  - which gcc
+  - which g++
+  - which ruby
+  - which java
   - wget https://raw.githubusercontent.com/csdms/wmt-exe/master/scripts/install
   - python ./install $(pwd)
